@@ -1,0 +1,9 @@
+*~
+*.aux
+*.out
+*.log
+.DS_Store
+auto/
+solution/
+__pycache__/
+resources/
