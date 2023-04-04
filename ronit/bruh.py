@@ -272,5 +272,5 @@ class self_organizing_maps:
 
 
 if __name__ == "__main__":
-    a = self_organizing_maps((10, 10), 'countries of the world.csv', 1, 1, 50)
+    a = self_organizing_maps((10, 10), 'happyData.csv', 1, 1, 50)
     a.mainSOM()
