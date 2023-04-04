@@ -57,7 +57,25 @@ class SOM:
             predictions[i] = bmu[0] * self.map_size[1] + bmu[1]
         return predictions
     
-    def colors(self):
+    def color(self, var):
+        for row in range(self.map_size[0]):
+            for column in range(self.map_size[1]):
+                weight = self.weights[row][column]
+                rgb = np.zeros(3)
+                for i in range(len(self.weights)):
+                    if i % 3 == 0:
+                        rgb[0] += weight[i] * var
+                    elif i % 3 == 1:
+                        rgb[1] += weight[i] * var
+                    else:
+                        rgb[2] += weight[i] * var
+
+                # Normalizing the rgb values
+                rgbSum = sum(rgb)
+                for i in range(len(rgb)):
+                    rgb[i] = rgb[i]/rgbSum
+                self.rgb = rgb
+                self.colorGrid[(row, column)] = rgb
         
 
 # import numpy as np

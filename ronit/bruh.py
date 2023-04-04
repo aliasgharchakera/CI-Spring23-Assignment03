@@ -48,17 +48,20 @@ class self_organizing_maps:
         '''
         df = pd.read_csv(self.path)
         df = df.dropna()
-        df = df.drop(columns=['RANK', 'Happiness score',
-                     'Whisker-high', 'Whisker-low'])
-        columns = ['Explained by: Social support',
-                   'Explained by: Freedom to make life choices', 'Explained by: Generosity', 'Explained by: Perceptions of corruption',
-                   ]
-        for i in df.columns:
-            if i in columns:
-                df[i] = df[i].str.replace(',', '.')
-            else:
-                df[i] = df[i].str.replace(',', '')
-        self.df = df
+        # df = df.drop(columns=['RANK', 'Happiness score',
+        #              'Whisker-high', 'Whisker-low'])
+        # columns = ['Explained by: Social support',
+        #            'Explained by: Freedom to make life choices', 'Explained by: Generosity', 'Explained by: Perceptions of corruption',
+        #            ]
+        
+        columns = ["Population", "Area (sq. mi.)", "Pop. Density (per sq. mi.)", "GDP ($ per capita)",	"Literacy (%)"]
+        # for i in df.columns:
+        #     if i in columns:
+        #         df[i] = df[i].str.replace(',', '.')
+        #     else:
+        #         df[i] = df[i].str.replace(',', '')
+        self.df = df[["Population", "Area (sq. mi.)", "Pop. Density (per sq. mi.)", "GDP ($ per capita)",	"Literacy (%)"]]
+        print(self.df)
         # For data to be used effectively we have to normalize it between certain values and for that I have used this method I found at GeeksforGeeks
         # Reference = https://www.geeksforgeeks.org/data-normalization-with-pandas/
         tempDf = df.drop(columns=['Country'])
@@ -67,6 +70,7 @@ class self_organizing_maps:
         self.MinData = scaledDf.min()
         self.MaxData = scaledDf.max()
         self.inputData = scaledDf
+        # print(self.inputData)
 
     def CalcDistance(self, input1, input2):
         '''
@@ -267,5 +271,5 @@ class self_organizing_maps:
 
 
 if __name__ == "__main__":
-    a = self_organizing_maps((40, 40), 'happyData.csv', 1, 1, 50)
+    a = self_organizing_maps((10, 10), 'countries of the world.csv', 1, 1, 50)
     a.mainSOM()
