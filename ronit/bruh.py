@@ -48,20 +48,21 @@ class self_organizing_maps:
         '''
         df = pd.read_csv(self.path)
         df = df.dropna()
-        # df = df.drop(columns=['RANK', 'Happiness score',
-        #              'Whisker-high', 'Whisker-low'])
-        # columns = ['Explained by: Social support',
-        #            'Explained by: Freedom to make life choices', 'Explained by: Generosity', 'Explained by: Perceptions of corruption',
-        #            ]
+        df = df.drop(columns=['RANK', 'Happiness score',
+                     'Whisker-high', 'Whisker-low'])
+        columns = ['Explained by: Social support',
+                   'Explained by: Freedom to make life choices', 'Explained by: Generosity', 'Explained by: Perceptions of corruption',
+                   ]
         
         columns = ["Population", "Area (sq. mi.)", "Pop. Density (per sq. mi.)", "GDP ($ per capita)",	"Literacy (%)"]
-        # for i in df.columns:
-        #     if i in columns:
-        #         df[i] = df[i].str.replace(',', '.')
-        #     else:
-        #         df[i] = df[i].str.replace(',', '')
-        self.df = df[["Population", "Area (sq. mi.)", "Pop. Density (per sq. mi.)", "GDP ($ per capita)",	"Literacy (%)"]]
-        print(self.df)
+        for i in df.columns:
+            if i in columns:
+                df[i] = df[i].str.replace(',', '.')
+            else:
+                df[i] = df[i].str.replace(',', '')
+        # self.df = df[["Population", "Area (sq. mi.)", "Pop. Density (per sq. mi.)", "GDP ($ per capita)",	"Literacy (%)"]]
+        # print(self.df)
+        self.df = df
         # For data to be used effectively we have to normalize it between certain values and for that I have used this method I found at GeeksforGeeks
         # Reference = https://www.geeksforgeeks.org/data-normalization-with-pandas/
         tempDf = df.drop(columns=['Country'])
