@@ -183,7 +183,7 @@ class RL:
                     i = self.currentState[0] + 1
                     j = self.currentState[1] 
 
-                #updates the current state.                
+                #updates the current state using temporal learning equation            
                 self.grid[self.currentState[0]][self.currentState[1]].value = self.grid[self.currentState[0]][self.currentState[1]].value + (self.alpha)*(self.grid[i][j].reward + (self.gamma)*(self.grid[i][j].value) - self.grid[self.currentState[0]][self.currentState[1]].value)
                 self.currentState = (i,j)
             if i != 0:
@@ -193,7 +193,9 @@ class RL:
             
     def visualizeGrid(self):
         '''
-        Places arrows on the grid. Visualizes Grid on the tkinter screen.
+        Places arrows on the grid. 
+        Visualizes Grid on the tkinter screen.
+        calls the DisplayGrid class implemented in vis.py file
         '''
         arrowDic = {}
         for i in range(self.size):
