@@ -8,9 +8,9 @@ df = pd.read_csv('countries of the world.csv')
 df.dropna(inplace=True)
 
 # Extract the columns you want to use as inputs for the SOM
-data = df[["Population", "Area (sq. mi.)", "Pop. Density (per sq. mi.)", "GDP ($ per capita)",	"Literacy (%)"]].to_numpy()
+data = df[["Population", "Area (sq. mi.)", "Pop. Density (per sq. mi.)", "GDP ($ per capita)",	"Literacy (%)", "Agriculture", "Industry", "Service", "Phones (per 1000)"]].to_numpy()
 countries = df[["Country"]]["Country"].values.tolist()
-countries = [i[:-1] for i in countries]
+# countries = [i[:-1] for i in countries]
 # data = df[["Population", "Area (sq. mi.)"]].to_numpy()
 # print(data.shape)
 # print(data)
@@ -21,7 +21,8 @@ som = SOM(map_size=(10, 10), input_size=data.shape[1], sigma=2.0, learning_rate=
 # som.train(data[:,1:])
 som.train(data)
 # print(som.countryMap)
-print(som.weights)
+# print(som.weights)
+som.color(0.7, 0.2)
 # Get the cluster labels for the data
 # cluster_labels = som.predict(data[:,1:])
 # cluster_labels = som.predict(data)
@@ -34,27 +35,27 @@ print(som.weights)
 # Do something with the data
 # print(df)
 
-gridData = []
-self.colourMatch = {}
-for i in range(len(self.inputData)):
-    winNeuron = self.winningNeuron(self.inputData[i])
-    self.winNeuronList.append(winNeuronData(
-        winNeuron, self.df.loc[i, "Country"]))
+# gridData = []
+# self.colourMatch = {}
+# for i in range(len(self.inputData)):
+#     winNeuron = self.winningNeuron(self.inputData[i])
+#     self.winNeuronList.append(winNeuronData(
+#         winNeuron, self.df.loc[i, "Country"]))
 
-for i in range(len(self.winNeuronList)):
-    countryName = self.winNeuronList[i].countryName
-    winNeuron = self.winNeuronList[i].winNeuron
-    self.colourMatch[countryName] = self.colorGrid[winNeuron.xloc,
-                                                    winNeuron.yloc]
-    centerx = winNeuron.xloc + activated
-    centery = winNeuron.yloc + activated
-    counter = 0
-    while (centerx, centery) in gridData and counter < 4:
-        centery = centery + activated
-        counter += 1
-    gridData.append((centerx, centery))
-    plt.text(centerx, centery, countryName)
-plt.xlabel('Width')
-plt.ylabel('Height')
-plt.title('Self Organizing Map Grid View Visualization with Countries')
-plt.show()
+# for i in range(len(self.winNeuronList)):
+#     countryName = self.winNeuronList[i].countryName
+#     winNeuron = self.winNeuronList[i].winNeuron
+#     self.colourMatch[countryName] = self.colorGrid[winNeuron.xloc,
+#                                                     winNeuron.yloc]
+#     centerx = winNeuron.xloc + activated
+#     centery = winNeuron.yloc + activated
+#     counter = 0
+#     while (centerx, centery) in gridData and counter < 4:
+#         centery = centery + activated
+#         counter += 1
+#     gridData.append((centerx, centery))
+#     plt.text(centerx, centery, countryName)
+# plt.xlabel('Width')
+# plt.ylabel('Height')
+# plt.title('Self Organizing Map Grid View Visualization with Countries')
+# plt.show()
