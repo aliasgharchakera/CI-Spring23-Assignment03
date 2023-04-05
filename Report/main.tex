@@ -70,7 +70,7 @@ The Boltzmann distribution provides a way to balance exploration and exploitatio
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth, height=0.25\textheight]{grid_1.png}
+  \includegraphics[width=0.4\textwidth, height=0.25\textheight]{images/grid_1.png}
   \caption{First Run}
 \end{figure}
 
@@ -83,7 +83,7 @@ The Boltzmann distribution provides a way to balance exploration and exploitatio
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth, height=0.3\textheight]{grid_2.png}
+  \includegraphics[width=0.5\textwidth, height=0.3\textheight]{images/grid_2.png}
   \caption{Second Run}
 \end{figure}
 \begin{itemize}
@@ -95,7 +95,7 @@ The Boltzmann distribution provides a way to balance exploration and exploitatio
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth, height=0.3\textheight]{grid_3.png}
+  \includegraphics[width=0.5\textwidth, height=0.3\textheight]{images/grid_3.png}
   \caption{Third Run}
 \end{figure}
 
@@ -131,12 +131,56 @@ Once the SOM has been trained, it can be visualized using a 2D or 3D map. The ma
 \subsubsection{Interpretation}
 Finally, the clusters can be interpreted and analyzed to gain insights into the underlying patterns and relationships in the data.
 
+\subsection{Dataset}
+The dataset used for this assignment is the \texttt{countries of the world.csv} from \href{https://www.kaggle.com/datasets/fernandol/countries-of-the-world}{Kaggle}. We have used the following features for SOM:
+\begin{itemize}
+    \item \texttt{Country}
+    \item \texttt{Region}
+    \item \texttt{Population}
+    \item \texttt{Area (sq. mi.)}
+    \item \texttt{Pop. Density (per sq. mi.)}
+    \item \texttt{GDP (\$ per capita)}
+    \item \texttt{Literacy (\%) }
+    \item \texttt{Phones (per 1000)}
+    \item \texttt{Agriculture}
+    \item \texttt{Industry}
+    \item \texttt{Service}
+\end{itemize}
+
+\subsection{Techniques Used}
+We have plotted the SOM using \texttt{matplotlib} and \texttt{geopandas}.
+
 \subsection{Results}
-This is the grid view of our 
+We used the following parameters to achieve the clustering below:
+\begin{itemize}
+    \item Grid Size $= 10 \times 10$
+    \item Epochs = 100
+    \item Learning Rate = 0.1 
+    \item $\Theta$ = 0.9
+\end{itemize}
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth, height=0.3\textheight]{grid.png}
+  \includegraphics[width=1\linewidth]{images/som_grid1.png}
   \caption{First Run}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{images/som_map1.png}
+  \caption{First Run}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{images/som_grid2.png}
+  \caption{Second Run}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{images/som_map2.png}
+  \caption{Second Run}
 \end{figure}
 
 \end{document}
